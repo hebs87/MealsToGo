@@ -1,18 +1,27 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, SafeAreaView, StatusBar, Platform, View, Text } from 'react-native';
+import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Our React Native Blank Canvas</Text>
-    </View>
+    <>
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.container}>
+          <Text>Welcome to MealsToGo</Text>
+        </View>
+      </SafeAreaView>
+      <ExpoStatusBar style="auto" />
+    </>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+  },
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 16,
   },
 });
 
